@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gesture.js demo page</title>
+	<meta name = "viewport" content = "width = device-width; initial-scale = 1; minimum-scale = 1; maximum-scale = 1; user-scalable = no">
+	<style>
+		.target{
+			background:red;
+			height:300px;
+			width:300px;
+			border:2px solid #333;
+			margin:50px auto;
+			position:relative;
+			text-align:center;
+			color:yellow;
+			font:25px/300px arial;
+		}
+	</style>
+</head>
+</head>
+<body>
+	<div class="target" id="target">Gesture.js</div>
+
+<script src="../gesture.js"></script>
+<script>
+	var startRotation = 0, startScale = 1, target = document.getElementById("target");
+	document.addEventListener("gesturestart", function(e){
+		e.preventDefault();
+	}, false);
+	target.addEventListener("gesturechange", function(e){
+		e.preventDefault();
+		target.style.webkitTransform =
+				'scale(' + (e.scale*startScale)  + ') rotate(' + (e.rotation + startRotation) + 'deg)';
+		target.style.mozTransform =
+				'scale(' + (e.scale*startScale)  + ') rotate(' + (e.rotation + startRotation) + 'deg)';
+	}, false);
+	document.addEventListener("touchmove", function(e){
+		e.preventDefault();
+	});
+	document.addEventListener("gestureend", function(e){
+		e.preventDefault();
+		startRotation = e.rotation + startRotation;
+		startScale = e.scale * startScale;
+	}, false);
+</script>
+</body>
+</html>
