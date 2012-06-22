@@ -13,3 +13,6 @@ Documentation from Apple [here]("http://developer.apple.com/library/ios/DOCUMENT
 
 It works on Android (default browser, Google Chrome and Dolphin) and on Windows 7 with Google Chrome.
 
+----------------
+
+BSD license
